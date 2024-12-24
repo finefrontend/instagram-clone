@@ -1,12 +1,20 @@
 import React from "react";
+import styled from "styled-components";
 
-export default function Feed({ nickname, country, imageSrc, likeCount, text }) {
+export default function Feed({
+  nickname,
+  country,
+  profile,
+  imageSrc,
+  likeCount,
+  text,
+}) {
   return (
-    <article className="contents">
+    <StyledFeed>
       <div className="feed_user_info">
         <div className="user_container">
           <div className="user_profile_img">
-            <img src="/assets/images/thumb.png" alt="프로필이미지" />
+            <img src={profile} alt={profile} />
           </div>
           <div className="user_name">
             <div className="nick_name m_text">{nickname}</div>
@@ -54,6 +62,106 @@ export default function Feed({ nickname, country, imageSrc, likeCount, text }) {
           <div className="s_text">{text}</div>
         </div>
       </div>
-    </article>
+    </StyledFeed>
   );
 }
+
+const StyledFeed = styled.article`
+  margin-bottom: 30px;
+  border-top: 1px solid #c6c6c8;
+
+  &:first-child {
+    border: none;
+  }
+
+  .feed_user_info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+
+    .user_profile_img {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin-right: 10px;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    .user_container {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  .feed_icon_more {
+    width: 14px;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .feed_img img {
+    width: 100%;
+    display: block;
+  }
+
+  .feed_details {
+    padding: 14px 14px 0 14px;
+
+    .feed_icons {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+
+      .icon {
+        width: 23px;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: 18px;
+
+        &.bookmark {
+          width: 20px;
+          margin-left: auto;
+        }
+
+        &:first-child {
+          margin-left: 0;
+        }
+
+        img {
+          width: 100%;
+        }
+      }
+    }
+
+    .feed_likes {
+      display: flex;
+      align-items: center;
+      margin-bottom: 5px;
+
+      .likes_profile_img {
+        width: 17px;
+        margin-right: 6px;
+
+        img {
+          width: 100%;
+        }
+      }
+    }
+
+    .feed_text {
+      display: flex;
+
+      .user_name {
+        margin-right: 5px;
+      }
+    }
+  }
+`;

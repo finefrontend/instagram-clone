@@ -1,6 +1,51 @@
 import Feed from "./Feed";
 import Story from "./Story";
 
+const storyData = [
+  {
+    isNew: true,
+    profile: "/assets/images/thumb.png",
+    nickname: "frontend1",
+  },
+  {
+    isNew: false,
+    profile: "/assets/images/thumb.png",
+    nickname: "frontend2",
+  },
+  {
+    isNew: true,
+    profile: "/assets/images/thumb.png",
+    nickname: "frontend3",
+  },
+];
+
+const feedData = [
+  {
+    nickname: "joshua_l",
+    country: "Seoul, South Korea",
+    profile: "/assets/images/thumb.png",
+    imageSrc: "/assets/images/posting_img.png",
+    likeCount: 2346,
+    text: "The game in Japan was amazing and I want to share some photos",
+  },
+  {
+    nickname: "joshua_l",
+    country: "Seoul, South Korea",
+    profile: "/assets/images/thumb.png",
+    imageSrc: "/assets/images/posting_img.png",
+    likeCount: 2346,
+    text: "The game in Japan was amazing and I want to share some photos",
+  },
+  {
+    nickname: "joshua_l",
+    country: "Seoul, South Korea",
+    profile: "/assets/images/thumb.png",
+    imageSrc: "/assets/images/posting_img.png",
+    likeCount: 2346,
+    text: "The game in Japan was amazing and I want to share some photos",
+  },
+];
+
 const Main = () => {
   return (
     <section id="container">
@@ -28,41 +73,25 @@ const Main = () => {
       <main>
         <section id="story_section">
           <div className="story_scroll">
-            <Story isNew profile="/assets/images/thumb.png" id="frontend" />
-            <Story isNew profile="/assets/images/thumb.png" id="frontend" />
-            <Story isNew profile="/assets/images/thumb.png" id="frontend" />
-            <Story isNew profile="/assets/images/thumb.png" id="frontend" />
-            <Story isNew profile="/assets/images/thumb.png" id="frontend" />
-            <Story isNew profile="/assets/images/thumb.png" id="frontend" />
-            <Story isNew profile="/assets/images/thumb.png" id="frontend" />
-            <Story isNew profile="/assets/images/thumb.png" id="frontend" />
-            <Story isNew profile="/assets/images/thumb.png" id="frontend" />
-            <Story isNew profile="/assets/images/thumb.png" id="frontend" />
+            {storyData.map(({ isNew, profile, nickname }) => (
+              <Story isNew={isNew} profile={profile} nickname={nickname} />
+            ))}
           </div>
         </section>
 
         <section id="feed_section">
-          <Feed
-            nickname="joshua_l"
-            country="Seoul, South Korea"
-            imageSrc="/assets/images/posting_img.png"
-            likeCount={2346}
-            text="The game in Japan was amazing and I want to share some photos"
-          />
-          <Feed
-            nickname="joshua_l"
-            country="Seoul, South Korea"
-            imageSrc="/assets/images/posting_img.png"
-            likeCount={2346}
-            text="The game in Japan was amazing and I want to share some photos"
-          />
-          <Feed
-            nickname="joshua_l"
-            country="Seoul, South Korea"
-            imageSrc="/assets/images/posting_img.png"
-            likeCount={2346}
-            text="The game in Japan was amazing and I want to share some photos"
-          />
+          {feedData.map(
+            ({ nickname, profile, country, imageSrc, likeCount, text }) => (
+              <Feed
+                nickname={nickname}
+                profile={profile}
+                country={country}
+                imageSrc={imageSrc}
+                likeCount={likeCount}
+                text={text}
+              />
+            )
+          )}
         </section>
       </main>
 
