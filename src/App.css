@@ -1,38 +1,240 @@
-.App {
-  text-align: center;
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  background: #fff;
+  color: #262626;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.m_text {
+  font-size: 14px;
+  font-weight: bold;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.s_text {
+  font-size: 12px;
+}
+
+/* header_section */
+#header_section {
+  border-bottom: 1px solid #c6c6c8;
+}
+
+#header_section .header_inner {
+  height: 44px;
+  position: relative;
   display: flex;
-  flex-direction: column;
   align-items: center;
+  justify-content: space-between;
+  padding: 0 15px;
+  background-color: #fff;
+}
+
+#header_section .header_inner .logo {
+  width: 105px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+#header_section .header_inner .logo img {
+  width: 100%;
+}
+
+#header_section .header_inner .icon {
+  width: 24px;
+  display: flex;
+  align-items: center;
+}
+
+#header_section .header_inner .icons {
+  display: flex;
+  gap: 15px;
+}
+
+#header_section .header_inner .icon img {
+  width: 100%;
+}
+
+/* story_section */
+
+#story_section {
+  border-bottom: 1px solid #c6c6c8;
+}
+
+#story_section .story_scroll {
+  height: 98px;
+  display: flex;
+  align-items: center;
+  overflow-x: auto;
+  padding-left: 10px;
+}
+
+/* feed_section */
+
+#feed_section {
+  margin-bottom: 60px;
+}
+
+/* bnb_section */
+
+#bnb_section {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background: #fff;
+  z-index: 1;
+  border: 1px solid #c6c6c8;
+}
+
+#bnb_section .bnb_inner {
+  height: 50px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+#bnb_section .bnb_inner .bnb_icon {
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
 }
 
-.App-link {
-  color: #61dafb;
+#bnb_section .bnb_inner .bnb_icon img {
+  width: 24px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#bnb_section .bnb_inner .bnb_icon img.profile-icon {
+  width: 23px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.01);
+  box-sizing: border-box;
 }
