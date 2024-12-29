@@ -37,11 +37,15 @@ const images = [
   'image16',
 ];
 
-const Library = () => {
+const Library = ({ handleChangeImage }) => {
   return (
     <LibraryWrapper>
-      {images.map((image) => (
-        <LibraryItem key={`library_item_${image}`} image={image} />
+      {images.map((image, index) => (
+        <LibraryItem
+          key={`library_item_${image}_${index}`}
+          image={image}
+          handleChangeImage={handleChangeImage}
+        />
       ))}
     </LibraryWrapper>
   );

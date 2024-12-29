@@ -1,15 +1,21 @@
-import React from 'react';
+import React, { useCallback, useState } from 'react';
 import Header from './Header';
 import SelectedBox from './SelectedBox';
 import Library from './Library';
 import styled from 'styled-components';
 
 const CreateFeed = () => {
+  const [selectedImage, setSelectedImage] = useState('');
+
+  const handleChangeImage = useCallback((image) => {
+    setSelectedImage(image);
+  }, []);
+
   return (
     <CreateFeedWrapper>
       <Header />
-      <SelectedBox />
-      <Library />
+      <SelectedBox selectedImage={selectedImage} />
+      <Library handleChangeImage={handleChangeImage} />
     </CreateFeedWrapper>
   );
 };
