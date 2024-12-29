@@ -1,48 +1,49 @@
-import Feed from "./Feed";
-import Story from "./Story";
+import React from 'react';
+import Feed from './Feed';
+import Story from './Story';
 
 const storyData = [
   {
     isNew: true,
-    profile: "/assets/images/thumb.png",
-    nickname: "frontend1",
+    profile: '/assets/images/thumb.png',
+    nickname: 'frontend1',
   },
   {
     isNew: false,
-    profile: "/assets/images/thumb.png",
-    nickname: "frontend2",
+    profile: '/assets/images/thumb.png',
+    nickname: 'frontend2',
   },
   {
     isNew: true,
-    profile: "/assets/images/thumb.png",
-    nickname: "frontend3",
+    profile: '/assets/images/thumb.png',
+    nickname: 'frontend3',
   },
 ];
 
 const feedData = [
   {
-    nickname: "joshua_l",
-    country: "Seoul, South Korea",
-    profile: "/assets/images/thumb.png",
-    imageSrc: "/assets/images/posting_img.png",
+    nickname: 'joshua_l',
+    country: 'Seoul, South Korea',
+    profile: '/assets/images/thumb.png',
+    imageSrc: '/assets/images/posting_img.png',
     likeCount: 2346,
-    text: "The game in Japan was amazing and I want to share some photos",
+    text: 'The game in Japan was amazing and I want to share some photos',
   },
   {
-    nickname: "joshua_l",
-    country: "Seoul, South Korea",
-    profile: "/assets/images/thumb.png",
-    imageSrc: "/assets/images/posting_img.png",
+    nickname: 'joshua_l',
+    country: 'Seoul, South Korea',
+    profile: '/assets/images/thumb.png',
+    imageSrc: '/assets/images/posting_img.png',
     likeCount: 2346,
-    text: "The game in Japan was amazing and I want to share some photos",
+    text: 'The game in Japan was amazing and I want to share some photos',
   },
   {
-    nickname: "joshua_l",
-    country: "Seoul, South Korea",
-    profile: "/assets/images/thumb.png",
-    imageSrc: "/assets/images/posting_img.png",
+    nickname: 'joshua_l',
+    country: 'Seoul, South Korea',
+    profile: '/assets/images/thumb.png',
+    imageSrc: '/assets/images/posting_img.png',
     likeCount: 2346,
-    text: "The game in Japan was amazing and I want to share some photos",
+    text: 'The game in Japan was amazing and I want to share some photos',
   },
 ];
 
@@ -73,16 +74,25 @@ const Main = () => {
       <main>
         <section id="story_section">
           <div className="story_scroll">
-            {storyData.map(({ isNew, profile, nickname }) => (
-              <Story isNew={isNew} profile={profile} nickname={nickname} />
+            {storyData.map(({ isNew, profile, nickname }, index) => (
+              <Story
+                key={`story_${profile}_${nickname}_${index}`}
+                isNew={isNew}
+                profile={profile}
+                nickname={nickname}
+              />
             ))}
           </div>
         </section>
 
         <section id="feed_section">
           {feedData.map(
-            ({ nickname, profile, country, imageSrc, likeCount, text }) => (
+            (
+              { nickname, profile, country, imageSrc, likeCount, text },
+              index
+            ) => (
               <Feed
+                key={`feed_${profile}_${nickname}_${index}`}
                 nickname={nickname}
                 profile={profile}
                 country={country}
