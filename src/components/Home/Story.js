@@ -1,9 +1,9 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
 export default function Story({ isNew, profile, nickname }) {
   return (
-    <StyledStory className={isNew ? "new" : ""}>
+    <StyledStory className={isNew ? 'new' : ''}>
       <div className="user_thumb_img">
         <img src={profile} alt={profile} />
       </div>
