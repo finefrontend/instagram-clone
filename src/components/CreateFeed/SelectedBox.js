@@ -4,9 +4,7 @@ import styled from 'styled-components';
 const SelectedBox = ({ selectedImage }) => {
   return (
     <SelectedBoxWrapper>
-      {selectedImage && (
-        <img src={`/assets/images/library/${selectedImage}.png`} />
-      )}
+      {selectedImage && <img src={`/assets/images/library/${selectedImage}`} />}
     </SelectedBoxWrapper>
   );
 };

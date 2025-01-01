@@ -1,11 +1,26 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 
-const Header = () => {
+const Header = ({ handleChangeStep, handleSubmit, step, isSelectedImage }) => {
+  const navigate = useNavigate();
+
   return (
     <HeaderWrapper>
-      <CancleButton>Cancle</CancleButton>
-      <NextButton>Next</NextButton>
+      {step === 0 && (
+        <>
+          <CancleButton onClick={() => navigate(-1)}>CANCLE</CancleButton>
+          <NextButton onClick={() => isSelectedImage && handleChangeStep(1)}>
+            NEXT
+          </NextButton>
+        </>
+      )}
+      {step === 1 && (
+        <>
+          <CancleButton onClick={() => handleChangeStep(0)}>BACK</CancleButton>
+          <NextButton onClick={handleSubmit}>DONE</NextButton>
+        </>
+      )}
     </HeaderWrapper>
   );
 };

@@ -8,7 +8,7 @@ const LibraryItem = ({ image, handleChangeImage }) => {
         handleChangeImage(image);
       }}
     >
-      <img src={`/assets/images/library/${image}.png`} />
+      <img src={`/assets/images/library/${image}`} />
     </LibraryItemWrapper>
   );
 };

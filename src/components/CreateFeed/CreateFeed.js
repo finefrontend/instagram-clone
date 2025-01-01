@@ -1,21 +1,68 @@
 import React, { useCallback, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
 import Header from './Header';
 import SelectedBox from './SelectedBox';
 import Library from './Library';
-import styled from 'styled-components';
+import InputArea from './InputArea';
 
 const CreateFeed = () => {
   const [selectedImage, setSelectedImage] = useState('');
+  const [step, setStep] = useState(0);
+  const [textareaValue, setTextareaValue] = useState('');
+
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { state } = location;
 
   const handleChangeImage = useCallback((image) => {
     setSelectedImage(image);
   }, []);
 
+  const handleChangeStep = useCallback((value) => {
+    setStep(value);
+  }, []);
+
+  const handleChageTextarea = useCallback((e) => {
+    setTextareaValue(e.target.value);
+  }, []);
+
+  const handleSubmit = useCallback(() => {
+    navigate('/', {
+      state: [
+        {
+          nickname: 'user1',
+          contry: 'Seoul',
+          profile: '/assets/images/thumb.png',
+          imageSrc: `/assets/images/library/${selectedImage}`,
+          likeCount: 2346,
+          text: textareaValue,
+        },
+        ...state,
+      ],
+    });
+  }, [navigate, selectedImage, state, textareaValue]);
+
   return (
     <CreateFeedWrapper>
-      <Header />
-      <SelectedBox selectedImage={selectedImage} />
-      <Library handleChangeImage={handleChangeImage} />
+      <Header
+        handleChangeStep={handleChangeStep}
+        handleSubmit={handleSubmit}
+        step={step}
+        isSelectedImage={!!selectedImage}
+      />
+      {step == 0 && (
+        <>
+          <SelectedBox selectedImage={selectedImage} />
+          <Library handleChangeImage={handleChangeImage} />
+        </>
+      )}
+      {step == 1 && (
+        <InputArea
+          handleChageTextarea={handleChageTextarea}
+          textareaValue={textareaValue}
+        />
+      )}
     </CreateFeedWrapper>
   );
 };
@@ -25,6 +72,7 @@ const CreateFeedWrapper = styled.main`
   flex-direction: column;
   width: 100%;
   height: 100dvh;
+  background: linear-gradient(135deg, #f3f4f6, #e8eaed);
 `;
 
 export default CreateFeed;

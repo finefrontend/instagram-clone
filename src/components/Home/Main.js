@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useMemo } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import Feed from './Feed';
 import Story from './Story';
 
@@ -48,6 +49,12 @@ const feedData = [
 ];
 
 const Main = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { state: newFeedList } = location;
+
+  const feedList = useMemo(() => newFeedList || feedData, [newFeedList]);
+
   return (
     <section id="container">
       <header id="header_section">
@@ -86,7 +93,7 @@ const Main = () => {
         </section>
 
         <section id="feed_section">
-          {feedData.map(
+          {feedList.map(
             (
               { nickname, profile, country, imageSrc, likeCount, text },
               index
@@ -113,7 +120,10 @@ const Main = () => {
           <div className="bnb_icon">
             <img src="/assets/images/icons/search.png" alt="search Icon" />
           </div>
-          <div className="bnb_icon">
+          <div
+            className="bnb_icon"
+            onClick={() => navigate('/create-feed', { state: feedList })}
+          >
             <img src="/assets/images/icons/add.png" alt="add Icon" />
           </div>
           <div className="bnb_icon">
