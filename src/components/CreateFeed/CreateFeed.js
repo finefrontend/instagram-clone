@@ -28,9 +28,12 @@ const CreateFeed = () => {
   }, []);
 
   const handleSubmit = useCallback(() => {
+    const newContentNo = state[0].contentNo + 1;
+
     navigate('/', {
       state: [
         {
+          contentNo: newContentNo,
           nickname: 'user1',
           country: 'Seoul, South Korea',
           profile: '/assets/images/thumb.png',

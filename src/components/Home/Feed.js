@@ -2,6 +2,7 @@ import React, { useCallback, useState } from 'react';
 import styled from 'styled-components';
 
 export default function Feed({
+  contentNo,
   nickname,
   country,
   profile,
@@ -37,20 +38,7 @@ export default function Feed({
 
           <ul className={`more_popup ${isOpenMorePopup && 'active'}`}>
             <li>수정</li>
-            <li
-              onClick={() =>
-                handleDeleteFeed({
-                  nickname,
-                  country,
-                  profile,
-                  imageSrc,
-                  likeCount,
-                  text,
-                })
-              }
-            >
-              삭제
-            </li>
+            <li onClick={() => handleDeleteFeed(contentNo)}>삭제</li>
           </ul>
         </div>
       </div>

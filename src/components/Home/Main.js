@@ -23,6 +23,7 @@ const storyData = [
 
 const feedData = [
   {
+    contentNo: 3,
     nickname: 'joshua_l1',
     country: 'Seoul, South Korea',
     profile: '/assets/images/thumb.png',
@@ -31,6 +32,7 @@ const feedData = [
     text: 'The game in Japan was amazing and I want to share some photos1',
   },
   {
+    contentNo: 2,
     nickname: 'joshua_l2',
     country: 'Seoul, South Korea',
     profile: '/assets/images/thumb.png',
@@ -39,6 +41,7 @@ const feedData = [
     text: 'The game in Japan was amazing and I want to share some photos2',
   },
   {
+    contentNo: 1,
     nickname: 'joshua_l3',
     country: 'Seoul, South Korea',
     profile: '/assets/images/thumb.png',
@@ -58,9 +61,9 @@ const Main = () => {
   const [feedList, setFeedList] = useState(initialFeedList);
 
   const handleDeleteFeed = useCallback(
-    (deleteItem) => {
+    (contentNo) => {
       const newArr = feedList.filter((feed) => {
-        return JSON.stringify(feed) !== JSON.stringify(deleteItem);
+        return feed.contentNo !== contentNo;
       });
 
       setFeedList(newArr);
@@ -108,12 +111,21 @@ const Main = () => {
         <section id="feed_section">
           {feedList.map(
             (
-              { nickname, profile, country, imageSrc, likeCount, text },
+              {
+                contentNo,
+                nickname,
+                profile,
+                country,
+                imageSrc,
+                likeCount,
+                text,
+              },
               index
             ) => (
               <Feed
                 key={`feed_${profile}_${nickname}_${index}`}
                 handleDeleteFeed={handleDeleteFeed}
+                contentNo={contentNo}
                 nickname={nickname}
                 profile={profile}
                 country={country}
