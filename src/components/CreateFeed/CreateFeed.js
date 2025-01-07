@@ -32,7 +32,7 @@ const CreateFeed = () => {
       state: [
         {
           nickname: 'user1',
-          contry: 'Seoul',
+          country: 'Seoul, South Korea',
           profile: '/assets/images/thumb.png',
           imageSrc: `/assets/images/library/${selectedImage}`,
           likeCount: 2346,
