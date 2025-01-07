@@ -1,22 +1,17 @@
-import React, { Suspense, lazy } from 'react';
+import React from 'react';
 
 import { Routes, Route } from 'react-router-dom';
 
 import './App.css';
-
-const Home = lazy(() => import('./pages/Home'));
-
-const CreateFeed = lazy(() => import('./pages/CreateFeed'));
+import Home from './pages/Home';
+import CreateFeedPage from './pages/CreateFeed';
 
 const App = () => {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <Routes>
-        <Route path="/" element={<Home />} />
-
-        <Route path="/create-feed" element={<CreateFeed />} />
-      </Routes>
-    </Suspense>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/create-feed" element={<CreateFeedPage />} />
+    </Routes>
   );
 };
 
