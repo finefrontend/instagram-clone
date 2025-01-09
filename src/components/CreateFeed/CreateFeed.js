@@ -28,11 +28,14 @@ const CreateFeed = () => {
   }, []);
 
   const handleSubmit = useCallback(() => {
+    const newContentNo = state[0].contentNo + 1;
+
     navigate('/', {
       state: [
         {
+          contentNo: newContentNo,
           nickname: 'user1',
-          contry: 'Seoul',
+          country: 'Seoul, South Korea',
           profile: '/assets/images/thumb.png',
           imageSrc: `/assets/images/library/${selectedImage}`,
           likeCount: 2346,

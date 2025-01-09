@@ -1,14 +1,21 @@
-import React from 'react';
+import React, { useCallback, useState } from 'react';
 import styled from 'styled-components';
 
 export default function Feed({
+  contentNo,
   nickname,
   country,
   profile,
   imageSrc,
   likeCount,
   text,
+  handleDeleteFeed,
 }) {
+  const [isOpenMorePopup, setIsOpenMorePopup] = useState(false);
+  const handleClickMoreButton = useCallback(() => {
+    setIsOpenMorePopup(!isOpenMorePopup);
+  }, [isOpenMorePopup]);
+
   return (
     <StyledFeed>
       <div className="feed_user_info">
@@ -22,9 +29,18 @@ export default function Feed({
           </div>
         </div>
 
-        <a href="#" className="feed_icon_more">
-          <img src="/assets/images/icons/more.png" alt="more icon" />
-        </a>
+        <div className="feed_icon_more">
+          <img
+            src="/assets/images/icons/more.png"
+            alt="more icon"
+            onClick={handleClickMoreButton}
+          />
+
+          <ul className={`more_popup ${isOpenMorePopup && 'active'}`}>
+            <li>수정</li>
+            <li onClick={() => handleDeleteFeed(contentNo)}>삭제</li>
+          </ul>
+        </div>
       </div>
 
       <div className="feed_img">
@@ -100,9 +116,31 @@ const StyledFeed = styled.article`
 
   .feed_icon_more {
     width: 14px;
+    position: relative;
 
     img {
       width: 100%;
+    }
+
+    .more_popup {
+      position: absolute;
+      top: calc(100% + 4px);
+      width: 80px;
+      right: 0;
+      background: #fff;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 8px 0;
+      display: none;
+
+      li {
+        padding: 8px 16px;
+        text-align: center;
+        font-weight: bold;
+      }
+      &.active {
+        display: block;
+      }
     }
   }
 
